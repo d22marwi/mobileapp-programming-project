@@ -2,14 +2,18 @@ package com.example.project;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements JsonTask.JsonTaskListener {
@@ -35,9 +39,22 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         Type type = new TypeToken<List<Planet>>() {
         }.getType();
         List<Planet> ListOfPlanets = gson.fromJson(json, type);
+        ArrayList<Planet> items = new ArrayList<>();
+
 
         for (Planet planet : ListOfPlanets) {
             Log.d("Planet", planet.toString());
+            items.add(new Planet(planet.getName()));
         }
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, items, new RecyclerViewAdapter.OnClickListener() {
+            @Override
+            public void onClick(Planet item) {
+                Toast.makeText(MainActivity.this, item.getName(), Toast.LENGTH_LONG).show();
+            }
+        });
+
+        RecyclerView recycler_view = findViewById(R.id.recycler_view);
+        recycler_view.setLayoutManager(new LinearLayoutManager(this));
+        recycler_view.setAdapter(adapter);
     }
 }
