@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Project</string>
+    <string name="edittext"> Denna app är till för personer i alla åldrar som är nyfika på planeterna i vårat solsystem. </string>
 </resources>
