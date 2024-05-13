@@ -1,26 +1,21 @@
 package com.example.project;
 
+import android.os.Bundle;
+import android.webkit.WebView;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-
 public class SecondActivity extends AppCompatActivity {
-
+    WebView webview;
+    public void showInternalWebPage(){
+        webview.loadUrl("file:///android_asset/about.html");
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
 
-        Button Submit = findViewById(R.id.my_button2);
-        Submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(SecondActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
+        webview = findViewById(R.id.webview);
+        showInternalWebPage();
     }
 }
