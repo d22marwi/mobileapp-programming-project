@@ -52,12 +52,14 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
 
         for (Planet planet : ListOfPlanets) {
             Log.d("Planet", planet.toString());
-            items.add(new Planet(planet.getName()));
+            items.add(new Planet(planet.getName(), planet.getSize()));
         }
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, items, new RecyclerViewAdapter.OnClickListener() {
             @Override
             public void onClick(Planet item) {
                 Toast.makeText(MainActivity.this, item.getName(), Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, item.getSize(), Toast.LENGTH_LONG).show();
+
             }
         });
 
