@@ -31,8 +31,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.title.setText(items.get(position).getName());
-        holder.size.setText(String.valueOf(items.get(position).getSize()));    }
+        Planet planet = items.get(position);
+        holder.title.setText("Name: " + planet.getName());
+        holder.size.setText("Size: " + planet.getSize() + " km");
+        holder.location.setText("Location: " + planet.getLocation());
+        holder.category.setText("Category: " + planet.getCategory());
+
+    }
 
     @Override
     public int getItemCount() {
@@ -42,12 +47,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView title;
         TextView size;
+        TextView location;
+        TextView category;
 
         ViewHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
             title = itemView.findViewById(R.id.title);
             size = itemView.findViewById(R.id.size);
+            location= itemView.findViewById(R.id.location);
+            category= itemView.findViewById(R.id.category);
         }
 
         @Override
