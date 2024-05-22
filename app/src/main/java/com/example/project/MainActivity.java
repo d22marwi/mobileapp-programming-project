@@ -36,8 +36,7 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         Log.d("MainActivity", json);
 
         Gson gson = new Gson();
-        Type type = new TypeToken<List<Planet>>() {
-        }.getType();
+        Type type = new TypeToken<List<Planet>>() {}.getType();
         List<Planet> ListOfPlanets = gson.fromJson(json, type);
         ArrayList<Planet> items = new ArrayList<>();
 
@@ -49,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
             @Override
             public void onClick(Planet item) {
                 Toast.makeText(MainActivity.this, item.getName(), Toast.LENGTH_LONG).show();
-                Toast.makeText(MainActivity.this, item.getSize(), Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, String.valueOf(item.getSize()), Toast.LENGTH_LONG).show();
                 Toast.makeText(MainActivity.this, item.getLocation(), Toast.LENGTH_LONG).show();
                 Toast.makeText(MainActivity.this, item.getCategory(), Toast.LENGTH_LONG).show();
             }

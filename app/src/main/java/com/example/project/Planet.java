@@ -7,7 +7,6 @@ public class Planet {
     private String location;
     private String category;
 
-
     public Planet(String name, int size, String location, String category) {
         this.name = name;
         this.size = size;
@@ -20,7 +19,7 @@ public class Planet {
         return name;
     }
 
-    public int getSize() { // Getter returns int
+    public int getSize() {
 
         return size;
     }
